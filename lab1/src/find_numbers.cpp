@@ -8,7 +8,10 @@ std::string find_numbers_in_string(const std::string& input) {
             Num += c;
         } else {
             if (!Num.empty()) {
-                result += Num + " ";
+                if (!result.empty()) {
+                    result += " ";     
+                }
+                result += Num;         
                 Num.clear();
             }
         }

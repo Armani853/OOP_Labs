@@ -11,4 +11,6 @@ FetchContent_MakeAvailable(googletest)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+add_library(find_numbers_lib src/find_numbers.cpp)
 
+add_subdirectory(tests)

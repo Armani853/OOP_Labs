@@ -1,18 +1,21 @@
-#include "gtest/gtest.h" 
-
-
-TEST(MyProgramTests, TrueAssertion) {
-    EXPECT_TRUE(true);
+#include "gtest/gtest.h"
+#include "../src/find_numbers.h" 
+TEST(FindNumbersTest, FindsSingleNumber) {
+    EXPECT_EQ("123", find_numbers_in_string("abc123def"));
 }
 
-TEST(MyProgramTests, AdditionTest) {
-    int a = 5;
-    int b = 7;
-    
-    ASSERT_EQ(a + b, 12);
+TEST(FindNumbersTest, FindsMultipleNumbers) {
+    EXPECT_EQ("10 20 30", find_numbers_in_string("a10b20c30d"));
 }
 
-int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+TEST(FindNumbersTest, HandlesNoNumbers) {
+    EXPECT_EQ("", find_numbers_in_string("abcdefg"));
+}
+
+TEST(FindNumbersTest, HandlesMixedCharacters) {
+    EXPECT_EQ("789", find_numbers_in_string("!@#$789%^&*"));
+}
+
+TEST(FindNumbersTest, HandlesEmptyString) {
+    EXPECT_EQ("", find_numbers_in_string(""));
 }
